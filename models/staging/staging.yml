@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stging_orders
+  - name: stg_orders
     description: "Cleaned order line items from RAW.PUBLIC.RAW_ORDERS."
     columns:
       - name: order_id

@@ -1,6 +1,6 @@
 with lines as (
   select order_id, order_date, customer_id, quantity
-  from {{ ref('stging_orders') }}
+  from {{ ref('stg_orders') }}
 )
 select
   order_id,
