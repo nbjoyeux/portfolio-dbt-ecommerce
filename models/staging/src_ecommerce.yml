@@ -1,1 +1,8 @@
+version: 2
 
+sources:
+  - name: ecommerce
+    database: raw
+    schema: public
+    tables:
+      - name: raw_orders

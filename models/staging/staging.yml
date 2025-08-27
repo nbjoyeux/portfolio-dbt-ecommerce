@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stging_orders
+    description: "Cleaned order line items from RAW.PUBLIC.RAW_ORDERS."
+    columns:
+      - name: order_id
+        description: "Invoice number from the raw data."
+        tests: [not_null]
+      - name: customer_id
+        description: "Customer identifier."
+        tests: [not_null]
+      - name: order_date
+        description: "Order date derived from INVOICEDATE."
+        tests: [not_null]
+      - name: quantity
+        description: "Line quantity."
+        tests: [not_null]
