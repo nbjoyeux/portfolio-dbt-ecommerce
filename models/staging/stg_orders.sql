@@ -1,15 +1,14 @@
 with src as (
-  select * from {{ source('ecommerce','raw_orders') }}
-),
-clean as (
-  select
-      cast(INVOICENO   as varchar)              as order_id,
-      cast(CUSTOMERID  as varchar)              as customer_id,
-      try_to_timestamp_ntz(INVOICEDATE)         as order_ts,
-      to_date(try_to_timestamp_ntz(INVOICEDATE)) as order_date,
-      nullif(upper(COUNTRY), '')                as country,
-      nullif(DESCRIPTION, '')                   as product_name,
-      try_to_number(QUANTITY)                   as quantity
-  from src
+  select * from {{ source('ecommerce','RAW_ORDERS') }}
 )
-select * from clean
+select
+  nullif(trim(invoiceno), '')                          as order_id,
+  try_to_number(customerid)                            as customer_id,
+  try_to_date(invoicedate, 'MM/DD/YYYY HH24:MI')       as order_date,
+  try_to_number(quantity)                              as quantity,
+  trim(description)                                    as description,
+  trim(country)                                        as country
+from src
+where customer_id is not null
+  and order_date  is not null
+  and nullif(trim(invoiceno), '') is not null

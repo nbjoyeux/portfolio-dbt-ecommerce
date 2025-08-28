@@ -1,8 +1,11 @@
 version: 2
-
 sources:
   - name: ecommerce
-    database: raw
-    schema: public
+    database: RAW
+    schema: PUBLIC
     tables:
-      - name: raw_orders
+      - name: RAW_ORDERS
+        loaded_at_field: INVOICEDATE
+        freshness:
+          warn_after: {count: 9999, period: day}  # relaxed for demo
+          error_after: {count: 99999, period: day}

@@ -8,4 +8,4 @@ select
   order_date,
   sum(quantity) as items_count
 from lines
-group by 1,2,3;
+group by 1,2,3

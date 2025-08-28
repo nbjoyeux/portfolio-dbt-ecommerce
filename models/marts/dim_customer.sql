@@ -5,4 +5,4 @@ select
   max(order_date)                      as most_recent_order_date,
   count(distinct order_id)             as orders_lifetime
 from {{ ref('stg_orders') }}
-group by 1;
+group by 1

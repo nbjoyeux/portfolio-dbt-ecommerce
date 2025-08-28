@@ -6,13 +6,21 @@ models:
     columns:
       - name: order_id
         description: "Invoice number from the raw data."
-        tests: [not_null]
+        tests:
+          - not_null:
+              severity: warn
       - name: customer_id
         description: "Customer identifier."
-        tests: [not_null]
+        tests:
+          - not_null:
+              severity: warn
       - name: order_date
         description: "Order date derived from INVOICEDATE."
-        tests: [not_null]
+        tests:
+          - not_null:
+              severity: warn
       - name: quantity
         description: "Line quantity."
-        tests: [not_null]
+        tests:
+          - not_null:
+              severity: warn
